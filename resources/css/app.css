@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* font */
+
+*{
+    text-decoration: none;
+    font-style: none;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(238, 238, 238); */
+}
