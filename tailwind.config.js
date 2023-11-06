@@ -31,5 +31,9 @@ export default {
         },
     },
 
-    plugins: [forms, require("tw-elements/dist/plugin.cjs")],
+    plugins: [
+        forms,
+        require("tw-elements/dist/plugin.cjs"),
+        require("daisyui"),
+    ],
 };
