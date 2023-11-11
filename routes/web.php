@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -19,8 +20,17 @@ use Inertia\Inertia;
 */
 
 
+
+Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/logout',[LoginController::class, 'logout']);
+Route::get('/register', [LoginController::class, 'register']);
+
+
 Route::get('/tes', [UserController::class, 'tes']);
 
-Route::get('/', [UserController::class, 'dashboard']);
-Route::get('/detail/{id}', [UserController::class, 'detailProduct']);
-Route::get('/keranjang', [UserController::class, 'keranjang']);
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', [UserController::class, 'dashboard']);
+    Route::get('/detail/{id}', [UserController::class, 'detailProduct']);
+    Route::get('/keranjang', [UserController::class, 'keranjang']);
+});

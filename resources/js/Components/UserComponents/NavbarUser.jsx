@@ -33,7 +33,7 @@ const NavbarUser = () => {
 
                 {/* User Profile */}
                 <div className="userProfile flex flex-row gap-10 sm:col-start-4 sm:mr-10 sm:flex sm:justify-end items-center ">
-                    <Link>
+                    <Link href="/keranjang">
                         <div className="keranjang">
                             <img
                                 src={keranjang}
@@ -42,11 +42,32 @@ const NavbarUser = () => {
                             />
                         </div>
                     </Link>
-                    <img
-                        className="items-center w-8 sm:w-8 lg:w-12 ml-7 sm:ml-0"
-                        src={UserIcon}
-                        alt=""
-                    />
+                    <div className="profile">
+                        <div className="dropdown dropdown-hover dropdown-end">
+                            <label
+                                tabIndex={0}
+                                className="btn m-1 bg-transparent"
+                            >
+                                <img src={UserIcon} alt="" className="w-10" />
+                            </label>
+                            <ul
+                                tabIndex={0}
+                                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 gap-2"
+                            >
+                                <li>
+                                    <a>Profile</a>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/logout"
+                                        className="bg-red-400 hover:font-bold hover:bg-red-500 hover:text-white text-white"
+                                    >
+                                        Keluar
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="menu hidden sm:flex sm:text-xs md:text-sm lg:text-lg sm:gap-5 flex-row items-center row-start-2 col-start-1 col-span-3 py-2 ml-14 gap-8 text-custom-primary ">

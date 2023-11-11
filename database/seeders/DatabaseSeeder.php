@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,23 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        User::create([
+            'id_user' => 'user1',
+            'first_name' => 'Galih',
+            'last_name' => 'Rizky',
+            'email' => 'garix@gmail.com',
+            'username' => 'user',
+            'password' => bcrypt('123'),
+        ]);
+        User::create([
+            'id_user' => 'user2',
+            'first_name' => 'Heri',
+            'last_name' => 'Prima',
+            'email' => 'HeriPrimax@gmail.com',
+            'username' => 'user2',
+            'password' => bcrypt('123'),
+        ]);
 
         Product::create([
             'id_product' => 'product1',
