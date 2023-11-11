@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Keranjang;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -72,7 +73,22 @@ class DatabaseSeeder extends Seeder
             'product_stock' => 1287,
             'product_img' => '/asset/products/product-sk2.webp',
             'product_description' => ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores labore necessitatibus fugiat id nobis possimus nisi, recusandae illum. Officia debitis laboriosam eum quae voluptate doloribus commodi deleniti officiis saepe illum, fuga, reprehenderit inventore accusamus minima quos voluptatem? Sint dolor dignissimos rem ratione obcaecati ipsum eaque unde. Reprehenderit iste veniam incidunt?',
+        ]);
 
+        Keranjang::create([
+            'id_user'=>'user1',
+            'id_product'=>'product2',
+            'kuantitas'=>10,
+        ]);
+        Keranjang::create([
+            'id_user'=>'user1',
+            'id_product'=>'product3',
+            'kuantitas'=>45,
+        ]);
+        Keranjang::create([
+            'id_user'=>'user1',
+            'id_product'=>'product4',
+            'kuantitas'=>6,
         ]);
     }
 }

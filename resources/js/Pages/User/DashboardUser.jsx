@@ -8,12 +8,12 @@ import Recommend from "@/Components/UserComponents/Dashboard/Recommend";
 import SuperiorProduct from "@/Components/UserComponents/Dashboard/SuperiorProduct";
 import Footer from "@/Components/UserComponents/Footer";
 
-const DashboardUser = ({ product }) => {
+const DashboardUser = ({ product, idUser }) => {
     return (
         <div className="text-black">
             <Head title="Dashboard" />
             <div className="navBar fixed z-[100] top-0 w-full">
-                <NavbarUser />
+                <NavbarUser idUser={idUser} />
             </div>
 
             <div className="body pt-14 sm:pt-[15%] md:pt-[9%] h-[2000px]">

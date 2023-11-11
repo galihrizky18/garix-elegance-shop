@@ -1,8 +1,8 @@
 import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Login = () => {
+const Login = ({ berhasilRegister }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -11,11 +11,12 @@ const Login = () => {
             username,
             password,
         };
-
         Inertia.post("/login", data);
-
-        console.log("berhasil");
     };
+
+    useEffect(() => {
+        console.log("Data berhasilRegister:", berhasilRegister);
+    }, [berhasilRegister]);
 
     return (
         <div className="bg-gray-200 flex justify-center items-center h-screen">
@@ -32,6 +33,7 @@ const Login = () => {
                     <div className="title font-bold">
                         Masukan Username dan Password
                     </div>
+
                     <div className="w-full flex flex-col justify-center items-center gap-2">
                         <input
                             type="text"
@@ -63,8 +65,8 @@ const Login = () => {
                     </div>
 
                     <div className="registe w-full flex justify-end">
-                        <Link>
-                            <span className="text-sm font-roboto text-blue-800">
+                        <Link href="/register">
+                            <span className="text-sm font-roboto text-blue-800 hover:text-base">
                                 Belum Punya Akun?
                             </span>
                         </Link>

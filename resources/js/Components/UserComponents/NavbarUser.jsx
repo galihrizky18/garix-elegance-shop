@@ -4,7 +4,7 @@ import UserIcon from "../../../../public/asset/icon/user.svg";
 import BurgerMenuIcon from "../../../../public/asset/icon/burgerMenu.svg";
 import keranjang from "@asset/icon/keranjang.svg";
 
-const NavbarUser = () => {
+const NavbarUser = ({ idUser }) => {
     return (
         <>
             <div className="Navbar w-full bg-white px-2 pt-3 flex flex-row justify-between font-roboto border-b-[1px] sm:px-8 sm:grid sm:grid-cols-4 sm:grid-rows-2 border-custom-primary ">
@@ -33,7 +33,7 @@ const NavbarUser = () => {
 
                 {/* User Profile */}
                 <div className="userProfile flex flex-row gap-10 sm:col-start-4 sm:mr-10 sm:flex sm:justify-end items-center ">
-                    <Link href="/keranjang">
+                    <Link href={`/keranjang/${idUser}`}>
                         <div className="keranjang">
                             <img
                                 src={keranjang}

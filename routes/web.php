@@ -25,6 +25,7 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout',[LoginController::class, 'logout']);
 Route::get('/register', [LoginController::class, 'register']);
+Route::post('/register', [LoginController::class, 'storeUser']);
 
 
 Route::get('/tes', [UserController::class, 'tes']);
@@ -32,5 +33,6 @@ Route::get('/tes', [UserController::class, 'tes']);
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [UserController::class, 'dashboard']);
     Route::get('/detail/{id}', [UserController::class, 'detailProduct']);
-    Route::get('/keranjang', [UserController::class, 'keranjang']);
+    Route::get('/keranjang/{idUser}', [UserController::class, 'keranjang']);
+    Route::get('/delete/{id}', [UserController::class, 'deleteProductFromKeranjang']);
 });
