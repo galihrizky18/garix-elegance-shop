@@ -24,6 +24,7 @@
         "react-slick": "^0.29.0",
         "remixicon": "^3.5.0",
         "slick-carousel": "^1.8.1",
+        "swiper": "^11.0.4",
         "tw-elements": "^1.0.0"
     }
 }

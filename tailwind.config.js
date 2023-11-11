@@ -36,4 +36,8 @@ export default {
         require("tw-elements/dist/plugin.cjs"),
         require("daisyui"),
     ],
+
+    daisyui: {
+        themes: ["light"],
+    },
 };

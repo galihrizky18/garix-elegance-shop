@@ -1,20 +1,26 @@
+import { Link } from "@inertiajs/react";
+
 import UserIcon from "../../../../public/asset/icon/user.svg";
 import BurgerMenuIcon from "../../../../public/asset/icon/burgerMenu.svg";
+import keranjang from "@asset/icon/keranjang.svg";
 
 const NavbarUser = () => {
     return (
         <>
-            <div className="Navbar w-full bg-white px-2 pt-3 grid grid-cols-5 font-roboto border-b-[1px] sm:px-8 sm:grid-cols-4 sm:grid-rows-2 border-custom-primary ">
+            <div className="Navbar w-full bg-white px-2 pt-3 flex flex-row justify-between font-roboto border-b-[1px] sm:px-8 sm:grid sm:grid-cols-4 sm:grid-rows-2 border-custom-primary ">
                 <div className="burgerMenu sm:hidden col-start-1 ">
                     <img className="w-8 " src={BurgerMenuIcon} alt="" />
                 </div>
 
-                <a href="/">
+                <Link href="/">
                     <div className="logo text-3xl font-exo col-start-2 col-end-5 sm:col-start-1 items-center sm:col-end-1 sm:text-xl md:text-2xl lg:text-3xl italic font-bold text-custom-primary flex justify-center pb-2 sm:justify-start sm:w-[13rem] md:w-[15rem] lg:w-[19rem] ">
                         Garix Elegance
-                        <span className="hidden sm:inline-block ml-2"> Shop</span>
+                        <span className="hidden sm:inline-block ml-2">
+                            {" "}
+                            Shop
+                        </span>
                     </div>
-                </a>
+                </Link>
 
                 {/* search field */}
                 <div className="searchField hidden col-start-2 col-span-2 sm:flex items-center md:ml-14 lg:ml-20 sm:ml-14 ">
@@ -26,7 +32,16 @@ const NavbarUser = () => {
                 </div>
 
                 {/* User Profile */}
-                <div className="userProfile sm:col-start-4 sm:mr-10 sm:flex sm:justify-end items-center ">
+                <div className="userProfile flex flex-row gap-10 sm:col-start-4 sm:mr-10 sm:flex sm:justify-end items-center ">
+                    <Link>
+                        <div className="keranjang">
+                            <img
+                                src={keranjang}
+                                alt=""
+                                className="w-8 sm:w-8 lg:w-12 ml-7 sm:ml-0"
+                            />
+                        </div>
+                    </Link>
                     <img
                         className="items-center w-8 sm:w-8 lg:w-12 ml-7 sm:ml-0"
                         src={UserIcon}
