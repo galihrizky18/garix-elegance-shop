@@ -12,7 +12,7 @@ const NavbarUser = ({ idUser }) => {
                     <img className="w-8 " src={BurgerMenuIcon} alt="" />
                 </div>
 
-                <Link href="/">
+                <Link href="/dashboard">
                     <div className="logo text-3xl font-exo col-start-2 col-end-5 sm:col-start-1 items-center sm:col-end-1 sm:text-xl md:text-2xl lg:text-3xl italic font-bold text-custom-primary flex justify-center pb-2 sm:justify-start sm:w-[13rem] md:w-[15rem] lg:w-[19rem] ">
                         Garix Elegance
                         <span className="hidden sm:inline-block ml-2">

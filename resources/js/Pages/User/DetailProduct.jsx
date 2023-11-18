@@ -12,7 +12,7 @@ const DetailProduct = ({ product }) => {
                 <NavbarUser />
             </div>
 
-            <div className="body pt-14 sm:pt-[15%] md:pt-[10%] flex flex-col items-center justify-center ">
+            <div className="body pt-14 sm:pt-[15%] md:pt-[10%] mt-3 flex flex-col items-center justify-center ">
                 <div
                     className="card-detail-poduct shadow-lg bg-white rounded-xl w-[80%] px-5 py-3 grid grid-cols-2 gap-3"
                     style={{ gridTemplateColumns: "1.5fr 2fr" }}
