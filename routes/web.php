@@ -35,4 +35,5 @@ Route::middleware('auth')->group(function(){
     Route::get('/detail/{id}', [UserController::class, 'detailProduct']);
     Route::get('/keranjang/{idUser}', [UserController::class, 'keranjang']);
     Route::get('/delete/{id}', [UserController::class, 'deleteProductFromKeranjang']);
+    Route::post('/inputKeranjang', [UserController::class, 'inputKeranjang']);
 });

@@ -1,16 +1,40 @@
 import NavbarUser from "@/Components/UserComponents/NavbarUser";
+import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/react";
-import React from "react";
+import React, { useState } from "react";
 
-// Swiper
+const DetailProduct = ({ product, currentUser }) => {
+    const [kuantitas, setKuantitas] = useState();
 
-const DetailProduct = ({ product }) => {
+    const handleInputKeranjang = () => {
+        if (kuantitas >= 1) {
+            const data = {
+                id_product: product.id_product,
+                kuantitas,
+            };
+            Inertia.post("/inputKeranjang", data);
+        } else {
+            document.getElementById("notif_modal").showModal();
+        }
+    };
+
     return (
         <div className="bg-gray-100 h-[1000px]">
             <Head title="Detail" />
             <div className="navBar fixed z-[100] top-0 w-full">
-                <NavbarUser />
+                <NavbarUser idUser={currentUser.id_user} />
             </div>
+
+            {/* modal Dialog */}
+            <dialog id="notif_modal" className="modal">
+                <div className="modal-box bg-red-700 text-white">
+                    <h3 className="font-bold text-lg">Error!!!</h3>
+                    <p className="py-4">Kuantitas Harus di Isi</p>
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
 
             <div className="body pt-14 sm:pt-[15%] md:pt-[10%] mt-3 flex flex-col items-center justify-center ">
                 <div
@@ -41,6 +65,9 @@ const DetailProduct = ({ product }) => {
                                 type="number"
                                 placeholder="Type here"
                                 className="input input-bordered w-[25%] h-[100%] max-w-xs"
+                                onChange={(e) =>
+                                    setKuantitas(parseInt(e.target.value))
+                                }
                             />
                             <label htmlFor="" className="text-xs text-gray-500">
                                 Tersisa {product.product_stock}
@@ -48,7 +75,10 @@ const DetailProduct = ({ product }) => {
                         </div>
 
                         <div className="tombol mt-5">
-                            <button className=" border border-sky-500 h-10 text-sky-700 font-bold rounded-xl hover:bg-sky-500 hover:text-white w-52">
+                            <button
+                                className=" border border-sky-500 h-10 text-sky-700 font-bold rounded-xl hover:bg-sky-500 hover:text-white w-52"
+                                onClick={() => handleInputKeranjang()}
+                            >
                                 Masukan Keranjang
                             </button>
                         </div>

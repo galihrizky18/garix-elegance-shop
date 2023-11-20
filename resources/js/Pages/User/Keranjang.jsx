@@ -8,7 +8,7 @@ const Keranjang = ({ keranjang }) => {
     const handleDelete = () => {};
 
     return (
-        <div className="bg-gray-100 h-[1000px]">
+        <div className="bg-gray-100 pb-20">
             <Head title="Keranjang" />
             <div className="navBar fixed z-[100] top-0 w-full">
                 <NavbarKeranjang />

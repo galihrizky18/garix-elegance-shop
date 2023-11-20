@@ -27,6 +27,7 @@ class UserController extends Controller
         $product = Product::where('id_product', $id)->first();
         return Inertia::render('User/DetailProduct',[
             'product' => $product,
+            'currentUser' => Auth::user(),
         ]);
     }
 
@@ -40,12 +41,24 @@ class UserController extends Controller
         ]);
     }
 
+    public function inputKeranjang(Request $request){
+
+        $keranjang = new Keranjang();
+        $keranjang->id_user = Auth::user()->id_user;
+        $keranjang->id_product = $request->id_product;
+        $keranjang->kuantitas = $request->kuantitas;
+        $keranjang->save();
+
+        return redirect()->back();
+
+    }
+
     public function deleteProductFromKeranjang($idProduct){
 
         $product = Keranjang::where('id_product', $idProduct);
         $product->delete();
 
-        return redirect('/dashboard');
+        return redirect()->back();
 
 
     }
