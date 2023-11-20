@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Permissions-Policy" content="attribution-reporting=()">
 
+
     <title inertia>{{ config('app.name', 'Garix Elegance Shop') }}</title>
 
     {{-- Font Awesome --}}
@@ -27,7 +28,7 @@
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-custom-body">
     @inertia
 
     <script type="text/javascript" src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>

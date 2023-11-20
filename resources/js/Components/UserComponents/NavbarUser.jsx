@@ -71,11 +71,10 @@ const NavbarUser = ({ idUser }) => {
                 </div>
 
                 <div className="menu hidden sm:flex sm:text-xs md:text-sm lg:text-lg sm:gap-5 flex-row items-center row-start-2 col-start-1 col-span-3 py-2 ml-14 gap-8 text-custom-primary ">
-                    <div className="list">Categories</div>
+                    <Link href="/kategories">
+                        <div className="list">Categories</div>
+                    </Link>
                     <div className="list">Brands</div>
-                    <div className="list">Store</div>
-                    <div className="list ">Company</div>
-                    <div className="list">Store Locatian</div>
                 </div>
             </div>
         </>

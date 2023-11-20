@@ -63,8 +63,26 @@ class UserController extends Controller
 
     }
 
+    public function categories(){
+        $product = Product::all();
+        return Inertia::render('User/Categories',[
+            'product' => $product,
+        ]);
+    }
+
+    public function kategori($kategori){
+        $selectedProduct = Product::where('kategori', $kategori)->get();
+
+        return Inertia::render('User/SelectedCategory', [
+            'product' => $selectedProduct,
+        ]);
+    }
+
+
+
+
     public function tes(){
-        return Inertia::render('tes');
+        return Inertia::render('User/SelectedCategory');
     }
     
 }

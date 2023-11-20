@@ -27,7 +27,6 @@ Route::get('/logout',[LoginController::class, 'logout']);
 Route::get('/register', [LoginController::class, 'register']);
 Route::post('/register', [LoginController::class, 'storeUser']);
 
-
 Route::get('/tes', [UserController::class, 'tes']);
 
 Route::middleware('auth')->group(function(){
@@ -36,4 +35,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/keranjang/{idUser}', [UserController::class, 'keranjang']);
     Route::get('/delete/{id}', [UserController::class, 'deleteProductFromKeranjang']);
     Route::post('/inputKeranjang', [UserController::class, 'inputKeranjang']);
+    Route::get('/kategories', [UserController::class, 'categories']);
+    Route::get('/kategories/{kategori}', [UserController::class, 'kategori']);
 });

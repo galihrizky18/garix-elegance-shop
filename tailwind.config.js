@@ -26,6 +26,7 @@ export default {
                     primary: "#0b83bf",
                     secondary: "#22668D",
                     card: "#3799CA",
+                    body: "#F5F5F5",
                 },
             },
         },

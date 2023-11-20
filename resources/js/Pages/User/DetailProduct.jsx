@@ -19,7 +19,7 @@ const DetailProduct = ({ product, currentUser }) => {
     };
 
     return (
-        <div className="bg-gray-100 h-[1000px]">
+        <div className="bg-gray-100 pb-20">
             <Head title="Detail" />
             <div className="navBar fixed z-[100] top-0 w-full">
                 <NavbarUser idUser={currentUser.id_user} />
@@ -47,7 +47,7 @@ const DetailProduct = ({ product, currentUser }) => {
                         </div>
                     </div>
                     <div className="col2 px-5 py-3 flex flex-col gap-3">
-                        <div className="productName text-xl font-trocchi line-clamp-2 font-bold border-b pb-2 border-black">
+                        <div className="productName text-xl font-trocchi line-clamp-2 font-bold border-b border-black">
                             {product.product_name}
                         </div>
                         <div className="harga text-xl font-bold px-5 text-end items-end justify-end  text-primary">
@@ -89,7 +89,7 @@ const DetailProduct = ({ product, currentUser }) => {
                     <div className="judul font-bold text-xl text-center border-b border-gray-500 pb-2">
                         Deskripsi
                     </div>
-                    <div className="isi-deskripsi">
+                    <div className="isi-deskripsi whitespace-pre-line">
                         {product.product_description}
                     </div>
                 </div>

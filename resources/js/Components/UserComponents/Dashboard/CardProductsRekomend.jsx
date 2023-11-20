@@ -6,7 +6,7 @@ const CardProductsRekomend = ({ product }) => {
     return (
         <Link href={`/detail/${product.id_product}`}>
             <div className="flex px-2 flex-col justify-center">
-                <div className="item bg-white px-4 py-5 shadow-lg rounded-2xl sm:h-[300px]">
+                <div className="item bg-white px-4 py-5 shadow-lg rounded-2xl sm:h-[330px]">
                     <div className="gambar flex justify-center">
                         <img
                             src={product.product_img}

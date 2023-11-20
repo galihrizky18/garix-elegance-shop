@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/react";
 const CardProduct = ({ product }) => {
     return (
         <Link href={`/detail/${product.id_product}`}>
-            <div className="h-[230px] p-2 shadow-lg">
+            <div className="h-full p-2 shadow-lg flex flex-col justify-between">
                 <div className="image flex justify-center">
                     <img src={product.product_img} alt="" className="w-24 " />
                 </div>
