@@ -31,9 +31,9 @@ const SelectedCategory = ({ product }) => {
                         <div className="isi px-5">
                             <ul className="gap-10">
                                 <li
-                                    className={`mb-3 mt-2 flex items-center text-xs font-bold hover:text-custom-primary cursor-pointer ${
+                                    className={`mb-3 mt-2 flex items-center text-xs font-bold hover:text-custom-primary cursor-pointer hover:scale-105 transition-all duration-200 ${
                                         dataPertama.kategori === "kosmetik"
-                                            ? "text-custom-primary"
+                                            ? "text-custom-primary scale-105 "
                                             : ""
                                     }`}
                                     onClick={() =>
@@ -43,10 +43,10 @@ const SelectedCategory = ({ product }) => {
                                     Make Up
                                 </li>
                                 <li
-                                    className={`mb-3 mt-2 flex items-center  text-xs font-bold  hover:text-custom-primary cursor-pointer ${
+                                    className={`mb-3 mt-2 flex items-center  text-xs font-bold  hover:text-custom-primary cursor-pointer hover:scale-105 transition-all duration-200 ${
                                         dataPertama.kategori ===
                                         "perawatan wajah"
-                                            ? "text-custom-primary"
+                                            ? "text-custom-primary scale-105 "
                                             : ""
                                     }`}
                                     onClick={() =>
@@ -58,10 +58,10 @@ const SelectedCategory = ({ product }) => {
                                     Perawatan Wajah
                                 </li>
                                 <li
-                                    className={`mb-3 flex items-center text-xs font-bold  hover:text-custom-primary cursor-pointer ${
+                                    className={`mb-3 flex items-center text-xs font-bold  hover:text-custom-primary hover:scale-105 transition-all duration-200 cursor-pointer ${
                                         dataPertama.kategori ===
                                         "perawatan rambut"
-                                            ? "text-custom-primary"
+                                            ? "text-custom-primary scale-105 "
                                             : ""
                                     }`}
                                     onClick={() =>
@@ -73,10 +73,10 @@ const SelectedCategory = ({ product }) => {
                                     Perawatan Rambut
                                 </li>
                                 <li
-                                    className={`mb-3 flex items-center text-xs font-bold  hover:text-custom-primary cursor-pointer ${
+                                    className={`mb-3 flex items-center text-xs font-bold  hover:text-custom-primary hover:scale-105 transition-all duration-200 cursor-pointer ${
                                         dataPertama.kategori ===
                                         "perawatan kulit"
-                                            ? "text-custom-primary"
+                                            ? "text-custom-primary scale-105 "
                                             : ""
                                     }`}
                                     onClick={() =>
@@ -88,8 +88,9 @@ const SelectedCategory = ({ product }) => {
                                     Perawatan Kulit
                                 </li>
                                 <li
-                                    className={`mb-3 flex items-center text-xs font-bold  hover:text-custom-primary cursor-pointer ${
-                                        dataPertama.kategori === "parfum"
+                                    className={`mb-3 flex items-center text-xs font-bold  hover:text-custom-primary hover:scale-105 transition-all duration-200 cursor-pointer ${
+                                        dataPertama.kategori ===
+                                        "parfum scale-105 "
                                             ? "text-custom-primary"
                                             : ""
                                     }`}

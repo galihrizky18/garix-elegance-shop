@@ -70,7 +70,12 @@ const Recommend = ({ product }) => {
             <div className="pt-5">
                 <Slider {...settings}>
                     {product.map((data, id) => (
-                        <CardProducts key={id} product={data} />
+                        <div
+                            key={id}
+                            className="hover:scale-105 transition-all duration-300"
+                        >
+                            <CardProducts product={data} />
+                        </div>
                     ))}
                 </Slider>
             </div>

@@ -27,7 +27,7 @@ const Categories = ({ product }) => {
                         <div className="isi px-5">
                             <ul className="gap-10">
                                 <li
-                                    className="mb-3 mt-2 flex items-center text-xs font-bold hover:text-custom-primary cursor-pointer"
+                                    className="mb-3 mt-2 flex items-center text-xs font-bold hover:text-custom-primary hover:scale-105 transition-all duration-200 cursor-pointer"
                                     onClick={() =>
                                         handleSelectedKategori("kosmetik")
                                     }
@@ -35,7 +35,7 @@ const Categories = ({ product }) => {
                                     Make Up
                                 </li>
                                 <li
-                                    className="mb-3 mt-2 flex items-center  text-xs font-bold  hover:text-custom-primary cursor-pointer"
+                                    className="mb-3 mt-2 flex items-center  text-xs font-bold  hover:text-custom-primary  hover:scale-105 transition-all duration-200 cursor-pointer"
                                     onClick={() =>
                                         handleSelectedKategori(
                                             "perawatan wajah"
@@ -45,7 +45,7 @@ const Categories = ({ product }) => {
                                     Perawatan Wajah
                                 </li>
                                 <li
-                                    className="mb-3 flex items-center text-xs font-bold  hover:text-custom-primary cursor-pointer"
+                                    className="mb-3 flex items-center text-xs font-bold  hover:text-custom-primary hover:scale-105 transition-all duration-200 cursor-pointer"
                                     onClick={() =>
                                         handleSelectedKategori(
                                             "perawatan rambut"
@@ -55,7 +55,7 @@ const Categories = ({ product }) => {
                                     Perawatan Rambut
                                 </li>
                                 <li
-                                    className="mb-3 flex items-center text-xs font-bold  hover:text-custom-primary cursor-pointer"
+                                    className="mb-3 flex items-center text-xs font-bold  hover:text-custom-primary hover:scale-105 transition-all duration-200 cursor-pointer"
                                     onClick={() =>
                                         handleSelectedKategori(
                                             "perawatan kulit"
@@ -65,7 +65,7 @@ const Categories = ({ product }) => {
                                     Perawatan Kulit
                                 </li>
                                 <li
-                                    className="mb-3 flex items-center text-xs font-bold  hover:text-custom-primary cursor-pointer"
+                                    className="mb-3 flex items-center text-xs font-bold  hover:text-custom-primary hover:scale-105 transition-all duration-200 cursor-pointer"
                                     onClick={() =>
                                         handleSelectedKategori("parfum")
                                     }

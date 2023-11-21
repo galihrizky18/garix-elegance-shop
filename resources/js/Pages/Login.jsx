@@ -6,12 +6,15 @@ const Login = ({ berhasilRegister }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
-        const data = {
-            username,
-            password,
-        };
-        Inertia.post("/login", data);
+    const handleLogin = (e) => {
+        if (e.key === "Enter" || e.type === "click") {
+            e.preventDefault();
+            const data = {
+                username,
+                password,
+            };
+            Inertia.post("/login", data);
+        }
     };
 
     useEffect(() => {
@@ -42,6 +45,7 @@ const Login = ({ berhasilRegister }) => {
                             placeholder="Username"
                             className="h-9 w-[60%] rounded-lg"
                             onChange={(e) => setUsername(e.target.value)}
+                            onKeyDown={handleLogin}
                         />
                         <input
                             type="password"
@@ -50,12 +54,13 @@ const Login = ({ berhasilRegister }) => {
                             placeholder="Password"
                             className="h-9 w-[60%] rounded-lg"
                             onChange={(e) => setPassword(e.target.value)}
+                            onKeyDown={handleLogin}
                         />
 
                         <div className="tombol w-full flex justify-center mt-3">
                             <button
-                                className="bg-sky-500 text-white w-[40%] h-9 rounded-xl"
-                                onClick={() => handleLogin()}
+                                className="bg-sky-500 hover:bg-sky-600 text-white w-[40%] h-9 rounded-xl"
+                                onClick={handleLogin}
                             >
                                 <span className="text-xl font-bold font-exo">
                                     Login

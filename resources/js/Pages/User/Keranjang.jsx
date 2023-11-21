@@ -32,7 +32,6 @@ const Keranjang = ({ keranjang }) => {
                 </div>
 
                 {/* Product */}
-
                 {keranjang.map((data, i) => (
                     <div
                         key={i}
@@ -92,6 +91,12 @@ const Keranjang = ({ keranjang }) => {
                         </div>
                     </div>
                 ))}
+            </div>
+
+            <div className="flex justify-center mt-10">
+                <div className="card-total fixed bottom-0 w-[80%] h-[100px] shadow-xl items-center bg-white border-t border-gray-700">
+                    Ini Total
+                </div>
             </div>
         </div>
     );

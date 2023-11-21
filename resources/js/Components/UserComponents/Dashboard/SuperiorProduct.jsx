@@ -16,9 +16,14 @@ const SuperiorProduct = ({ product }) => {
                 </div>
             </div>
 
-            <div className="listProduct mt-5 grid grid-cols-2 sm:grid-cols-5 gap-2">
+            <div className="listProduct mt-5 grid grid-cols-2 sm:grid-cols-5 gap-5">
                 {product.map((data, id) => (
-                    <CardProduct key={id} product={data} />
+                    <div
+                        key={id}
+                        className="hover:scale-110 transition-all duration-300"
+                    >
+                        <CardProduct product={data} />
+                    </div>
                 ))}
             </div>
         </div>
