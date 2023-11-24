@@ -1,11 +1,11 @@
 import NavbarUser from "@/Components/UserComponents/NavbarUser";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Head } from "@inertiajs/react";
 import { Inertia } from "@inertiajs/inertia";
 import Footer from "@/Components/UserComponents/Footer";
 import ProdukCategory from "@/Components/UserComponents/Kategories/ProdukCategory";
 
-const Categories = ({ product }) => {
+const Categories = ({ product, currentUser }) => {
     const handleSelectedKategori = (kategori) => {
         Inertia.get(`/kategories/${kategori}`);
     };
@@ -13,7 +13,7 @@ const Categories = ({ product }) => {
     return (
         <div>
             <Head title="Kategori" />
-            <NavbarUser />
+            <NavbarUser idUser={currentUser.id_user} />
 
             <div className="body px-20 py-5">
                 <div className="title mb-3 font-bold text-xl px-5 py-2 bg-white">

@@ -67,6 +67,8 @@ class UserController extends Controller
         $product = Product::all();
         return Inertia::render('User/Categories',[
             'product' => $product,
+            'currentUser' => Auth::user(),
+
         ]);
     }
 
@@ -75,6 +77,7 @@ class UserController extends Controller
 
         return Inertia::render('User/SelectedCategory', [
             'product' => $selectedProduct,
+            'currentUser' => Auth::user(),
         ]);
     }
 

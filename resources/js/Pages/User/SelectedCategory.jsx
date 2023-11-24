@@ -5,17 +5,16 @@ import { Inertia } from "@inertiajs/inertia";
 import Footer from "@/Components/UserComponents/Footer";
 import ProdukCategory from "@/Components/UserComponents/Kategories/ProdukCategory";
 
-const SelectedCategory = ({ product }) => {
+const SelectedCategory = ({ product, currentUser }) => {
     const dataPertama = product[0];
     const handleSelectedKategori = (kategori) => {
-        // console.log(kategori);
         Inertia.get(`/kategories/${kategori}`);
     };
 
     return (
         <div>
             <Head title="Kategori" />
-            <NavbarUser />
+            <NavbarUser idUser={currentUser.id_user} />
 
             <div className="body px-20 py-5">
                 <div className="title mb-3 font-bold text-xl px-5 py-2 bg-white">

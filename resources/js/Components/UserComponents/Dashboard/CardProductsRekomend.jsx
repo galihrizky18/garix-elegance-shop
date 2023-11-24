@@ -2,7 +2,6 @@ import { Link } from "@inertiajs/react";
 import gambar from "../../../../../public/asset/products/product-dior.webp";
 
 const CardProductsRekomend = ({ product }) => {
-    console.log(product.product_img);
     return (
         <Link href={`/detail/${product.id_product}`}>
             <div className="flex px-2 flex-col justify-center">

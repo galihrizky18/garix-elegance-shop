@@ -1,11 +1,28 @@
 import NavbarKeranjang from "@/Components/UserComponents/NavbarKeranjang";
 import { Head, Link } from "@inertiajs/react";
-import React from "react";
-
-import gambar from "@asset/products/product-mac.webp";
+import React, { useEffect, useState } from "react";
 
 const Keranjang = ({ keranjang }) => {
-    const handleDelete = () => {};
+    const [hargaKeranjang, setHargaKeranjang] = useState([]);
+    const [totalHarga, setTotalharga] = useState(0);
+
+    const handleCheck = (data) => {
+        const hargaSatuan = data.product_price;
+        const kuantitas = data.kuantitas;
+        const total = hargaSatuan * kuantitas;
+
+        if (!hargaKeranjang.includes(total)) {
+            setHargaKeranjang([...hargaKeranjang, total]);
+        } else {
+            const updateHarga = hargaKeranjang.filter((e) => e !== total);
+            setHargaKeranjang(updateHarga);
+        }
+    };
+
+    useEffect(() => {
+        const hargaTotal = hargaKeranjang.reduce((acc, curr) => acc + curr, 0);
+        setTotalharga(hargaTotal);
+    }, [hargaKeranjang]);
 
     return (
         <div className="bg-gray-100 pb-20">
@@ -17,9 +34,13 @@ const Keranjang = ({ keranjang }) => {
                 <div
                     className="header bg-white shadow-lg w-[80%] grid  px-5 py-3"
                     style={{
-                        gridTemplateColumns: "1fr 0.3fr 0.3fr 0.3fr 0.2fr",
+                        gridTemplateColumns:
+                            "0.1fr 1fr 0.3fr 0.3fr 0.3fr 0.2fr ",
                     }}
                 >
+                    <div className="produk flex justify-center">
+                        <input type="checkbox" />
+                    </div>
                     <div className="produk flex justify-center">Product</div>
                     <div className="produk flex justify-center">
                         Harga satuan
@@ -37,15 +58,25 @@ const Keranjang = ({ keranjang }) => {
                         key={i}
                         className="product bg-white w-[80%] px-5 py-3 rounded-xl shadow-md grid gap-3"
                         style={{
-                            gridTemplateColumns: "1fr 0.3fr 0.3fr 0.3fr 0.2fr",
+                            gridTemplateColumns:
+                                "0.1fr 1fr 0.3fr 0.3fr 0.3fr 0.2fr",
                         }}
                     >
+                        <div className="produk flex justify-center items-center">
+                            <input
+                                id="checkBox"
+                                type="checkbox"
+                                onChange={() => {
+                                    handleCheck(data);
+                                }}
+                            />
+                        </div>
                         <div className="detail-product flex flex-row justify-center items-center ">
                             <div className="gambar">
                                 <img
                                     src={data.product_img}
                                     alt=""
-                                    className="w-[80%]"
+                                    className="w-[150px]"
                                 />
                             </div>
                             <div className="product-name w-full h-full flex items-center line-clamp-2 text-base">
@@ -94,8 +125,21 @@ const Keranjang = ({ keranjang }) => {
             </div>
 
             <div className="flex justify-center mt-10">
-                <div className="card-total fixed bottom-0 w-[80%] h-[100px] shadow-xl items-center bg-white border-t border-gray-700">
-                    Ini Total
+                <div className="card-total fixed bottom-0 w-[80%] h-[100px] flex flex-row justify-between p-10 shadow-xl items-center bg-white border-t border-gray-700">
+                    <div className="font-bold text-xl">Total Harga</div>
+                    <div className="font-bold text-2xl text-custom-primary">
+                        {new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                        })
+                            .format(totalHarga)
+                            .replace(",00", "")}
+                    </div>
+                    <div>
+                        <button className="btn btn-success hover:bg-[#36a57c] text-white">
+                            Check Out
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
