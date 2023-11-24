@@ -3,7 +3,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
 
-const DetailProduct = ({ product, currentUser }) => {
+const DetailProduct = ({ product, currentUser, productCount }) => {
     const [kuantitas, setKuantitas] = useState();
 
     const handleInputKeranjang = () => {
@@ -22,7 +22,10 @@ const DetailProduct = ({ product, currentUser }) => {
         <div className="bg-gray-100 pb-20">
             <Head title="Detail" />
             <div className="navBar fixed z-[100] top-0 w-full">
-                <NavbarUser idUser={currentUser.id_user} />
+                <NavbarUser
+                    idUser={currentUser.id_user}
+                    productCount={productCount}
+                />
             </div>
 
             {/* modal Dialog */}

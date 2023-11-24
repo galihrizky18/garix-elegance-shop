@@ -5,7 +5,7 @@ import { Inertia } from "@inertiajs/inertia";
 import Footer from "@/Components/UserComponents/Footer";
 import ProdukCategory from "@/Components/UserComponents/Kategories/ProdukCategory";
 
-const Categories = ({ product, currentUser }) => {
+const Categories = ({ product, currentUser, productCount }) => {
     const handleSelectedKategori = (kategori) => {
         Inertia.get(`/kategories/${kategori}`);
     };
@@ -13,7 +13,10 @@ const Categories = ({ product, currentUser }) => {
     return (
         <div>
             <Head title="Kategori" />
-            <NavbarUser idUser={currentUser.id_user} />
+            <NavbarUser
+                idUser={currentUser.id_user}
+                productCount={productCount}
+            />
 
             <div className="body px-20 py-5">
                 <div className="title mb-3 font-bold text-xl px-5 py-2 bg-white">

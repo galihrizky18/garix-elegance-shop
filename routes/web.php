@@ -37,4 +37,5 @@ Route::middleware('auth')->group(function(){
     Route::post('/inputKeranjang', [UserController::class, 'inputKeranjang']);
     Route::get('/kategories', [UserController::class, 'categories']);
     Route::get('/kategories/{kategori}', [UserController::class, 'kategori']);
+    Route::get('/product/{product}', [UserController::class, 'productSearch']);
 });
