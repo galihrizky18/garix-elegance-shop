@@ -90,7 +90,6 @@ class UserController extends Controller
         ]);
     }
 
-
     public function productSearch($product){
 
         $data = Product::where('product_name', 'like', '%'.$product."%")->get();
@@ -109,6 +108,30 @@ class UserController extends Controller
             'productCount' => $productCount,
 
         ]);
+    }
+
+    public function checkOut(Request $request){
+
+        $productCount = Keranjang::where('id_user', Auth::user()->id_user)->count();
+
+        return Inertia::render('User/CheckOut',[
+            'currentUser' => Auth::user(),
+            'productCount' => $productCount,
+            // 'product' => $request->data,
+        ]);
+
+    }
+
+
+
+
+
+
+
+
+
+    public function updateKuantitas(Request $request){
+        dd($request->all());
     }
 
     public function tes(){

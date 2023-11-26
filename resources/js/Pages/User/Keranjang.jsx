@@ -1,15 +1,29 @@
 import NavbarKeranjang from "@/Components/UserComponents/NavbarKeranjang";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
+import { Link } from "@inertiajs/react";
+import axios from "axios";
+import { Inertia } from "@inertiajs/inertia";
 
 const Keranjang = ({ keranjang }) => {
     const [hargaKeranjang, setHargaKeranjang] = useState([]);
     const [totalHarga, setTotalharga] = useState(0);
+    const [idProductDelete, setIdProductDelete] = useState();
+    const [idSelectedProduct, setIdSelectedProduct] = useState([]);
 
     const handleCheck = (data) => {
         const hargaSatuan = data.product_price;
         const kuantitas = data.kuantitas;
         const total = hargaSatuan * kuantitas;
+
+        if (!idSelectedProduct.includes(data.id_product)) {
+            setIdSelectedProduct([...idSelectedProduct, data.id_product]);
+        } else {
+            const updateIdSelectedProduct = idSelectedProduct.filter(
+                (e) => e !== data.id_product
+            );
+            setIdSelectedProduct(updateIdSelectedProduct);
+        }
 
         if (!hargaKeranjang.includes(total)) {
             setHargaKeranjang([...hargaKeranjang, total]);
@@ -19,13 +33,55 @@ const Keranjang = ({ keranjang }) => {
         }
     };
 
+    const handleUpdateKuantitas = async (id) => {
+        const idProductinKeranjang = {
+            idProduct: id,
+        };
+        console.log(id);
+        try {
+            // mengambil token csrf dari Meta di html
+            const csrfToken = document.querySelector(
+                'meta[name="csrf-token"]'
+            ).content;
+
+            const response = await axios.post(
+                "/updateKuantitas",
+                idProductinKeranjang,
+                {
+                    headers: {
+                        "X-CSRF-TOKEN": csrfToken,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleCheckOut = () => {
+        if (idSelectedProduct.length < 1) {
+            comfirmCheckOut.show();
+        } else {
+            const data = {
+                data: idSelectedProduct,
+            };
+
+            Inertia.post("/check-out", data);
+        }
+    };
+
     useEffect(() => {
         const hargaTotal = hargaKeranjang.reduce((acc, curr) => acc + curr, 0);
         setTotalharga(hargaTotal);
     }, [hargaKeranjang]);
 
+    // useEffect(() => {
+    //     console.log(idSelectedProduct);
+    // }, [idSelectedProduct]);
+
     return (
-        <div className="bg-gray-100 pb-20">
+        <div className="bg-gray-100 pb-20 font-trocchi">
             <Head title="Keranjang" />
             <div className="navBar fixed z-[100] top-0 w-full">
                 <NavbarKeranjang />
@@ -79,7 +135,7 @@ const Keranjang = ({ keranjang }) => {
                                     className="w-[150px]"
                                 />
                             </div>
-                            <div className="product-name w-full h-full flex items-center line-clamp-2 text-base">
+                            <div className="product-name w-full h-full ml-10 flex items-center line-clamp-2 text-base">
                                 <span className="line-clamp-2 leading-5 font-josefin">
                                     {data.product_name}
                                 </span>
@@ -100,6 +156,7 @@ const Keranjang = ({ keranjang }) => {
                                 type="number"
                                 className="w-[80%] h-[25%] mr-2"
                                 placeholder={data.kuantitas}
+                                onChange={() => handleUpdateKuantitas(data.id)}
                             />
                             <label htmlFor=""> Buah </label>
                         </div>
@@ -114,11 +171,17 @@ const Keranjang = ({ keranjang }) => {
                             </span>
                         </div>
                         <div className="tombol flex items-center justify-center ">
-                            <Link href={`/delete/${data.id_product}`}>
-                                <button className="bg-red-400 text-white w-20 rounded h-9 hover:bg-red-600">
-                                    Hapus
-                                </button>
-                            </Link>
+                            <button
+                                className=" w-[85%] h-[30%] rounded-xl bg-red-500 text-white hover:bg-red-600"
+                                onClick={() => {
+                                    setIdProductDelete(data.id_product);
+                                    document
+                                        .getElementById(`modal_delete`)
+                                        .showModal();
+                                }}
+                            >
+                                Delete
+                            </button>
                         </div>
                     </div>
                 ))}
@@ -136,12 +199,58 @@ const Keranjang = ({ keranjang }) => {
                             .replace(",00", "")}
                     </div>
                     <div>
-                        <button className="btn btn-success hover:bg-[#36a57c] text-white">
+                        <button
+                            className="btn btn-success hover:bg-[#36a57c] text-white"
+                            onClick={() => handleCheckOut()}
+                        >
                             Check Out
                         </button>
                     </div>
                 </div>
             </div>
+
+            {/* Modal */}
+            <dialog id="modal_delete" className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">PERHATIAN!!</h3>
+                    <p className="py-4">Yakin Ingin Hapus??</p>
+                    <div className="tombol flex justify-end items-center gap-3">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className=" w-20 h-9 bg-gray-200 hover:bg-gray-300 rounded-xl">
+                                Kembali
+                            </button>
+                        </form>
+                        <Link
+                            href={`/delete/${idProductDelete}`}
+                            className="bg-red-500 hover:bg-red-600 text-white w-[20%] flex justify-center items-center h-9 rounded-xl "
+                        >
+                            <button>Yakin</button>
+                        </Link>
+                    </div>
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
+
+            <dialog id="comfirmCheckOut" className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">PERHATIAN!!</h3>
+                    <p className="py-4">Tidak Ada Product yang dipilih</p>
+                    <div className="tombol flex justify-end items-center gap-3">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className=" w-20 h-9 bg-gray-200 hover:bg-gray-300 rounded-xl">
+                                Kembali
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
         </div>
     );
 };

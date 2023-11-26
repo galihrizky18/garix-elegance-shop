@@ -38,4 +38,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/kategories', [UserController::class, 'categories']);
     Route::get('/kategories/{kategori}', [UserController::class, 'kategori']);
     Route::get('/product/{product}', [UserController::class, 'productSearch']);
+    Route::post('/check-out', [UserController::class, 'checkOut']);
+
+    Route::post('/updateKuantitas', [UserController::class, 'updateKuantitas']);
 });

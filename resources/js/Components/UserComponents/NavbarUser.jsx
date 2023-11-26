@@ -73,9 +73,6 @@ const NavbarUser = ({ idUser, productCount }) => {
                                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 gap-2"
                             >
                                 <li>
-                                    <a>Profile</a>
-                                </li>
-                                <li>
                                     <Link
                                         href="/logout"
                                         className="bg-red-400 hover:font-bold hover:bg-red-500 hover:text-white text-white"
@@ -89,7 +86,10 @@ const NavbarUser = ({ idUser, productCount }) => {
                 </div>
 
                 <div className="menu hidden sm:flex sm:text-xs md:text-sm lg:text-lg sm:gap-5 flex-row items-center row-start-2 col-start-1 col-span-3 py-2 ml-14 gap-8 text-custom-primary ">
-                    <Link href="/kategories">
+                    <Link
+                        href="/kategories"
+                        className="hover:scale-105 transition-all hover:text-sky-700 "
+                    >
                         <div className="list">Categories</div>
                     </Link>
                 </div>
